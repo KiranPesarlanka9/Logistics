@@ -1,1 +1,1 @@
-web: gunicorn app:logistic
+web: gunicorn app:logistics
