@@ -70,3 +70,6 @@ def bookings():
     if request.method == 'POST':
         return create_booking(request.json)
 
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
+    
