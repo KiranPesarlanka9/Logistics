@@ -65,7 +65,6 @@ def create_booking(data):
 
 @app.route('/bookings', methods = ['GET', 'POST'])
 def bookings():
-    import pdb;pdb.set_trace()
     if request.method == 'GET':
         return get_bookings()
     if request.method == 'POST':
