@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Logistics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Main CSS File-->
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="container">
+  <h2>Logistics</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Transportation</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Out Shifting</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Transportation</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 2Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Out shifting</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<h2>Transportation</h2>
+<div class="container">
+    <div class="row">
+        <form method="post" id="home-odform-ajax" action="https://www.officiel-demenagement.com/devis-demenagement/submit-ajax">
+            <fieldset class="col-xs-12">
+               <div class="row">
+                   <div class="col-xs-12 col-sm-6">
+                       <input type="text" name="ville_depart" placeholder="Ville de départ" class="icon-depart addr-autocomplete autocomplete-on-blur">
+                       <input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[street_number]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[route]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[postal_code]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[locality]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[vicinity]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[administrative_area_level_1]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[administrative_area_level_2]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[country]">
+<input type="hidden" class="ville_depart_additionnal" name="ville_depart_additionnal[gps]">
+                                          </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <input type="text" name="ville_arrivee" placeholder="Ville d'arrivée" class="icon-depart addr-autocomplete autocomplete-on-blur">
+                        <input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[street_number]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[route]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[postal_code]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[locality]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[vicinity]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[administrative_area_level_1]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[administrative_area_level_2]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[country]">
+<input type="hidden" class="ville_arrivee_additionnal" name="ville_arrivee_additionnal[gps]">
+                                            </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <select class="selectmenu" name="type_logement_a_demenager" id="ui-id-2" style="display: none;">
+                          <option value="">Je déménage</option>
+                          <option value="type_logement_studio">Un studio &lt; 20 m²</option>
+                          <option value="type_logement_t1">Un T1 - 20 à 40 m²</option>
+                          <option value="type_logement_t2">Un T2 - 40 à 60 m²</option>
+                          <option value="type_logement_t3">Un T3 - 60 à 80 m²</option>
+                          <option value="type_logement_t4">Un T4 - 80 à 100 m²</option>
+                          <option value="type_logement_t5">Un T5 - 100 à 200 m²</option>
+                          <option value="type_logement_t6">Un T6 - 200 m² et plus</option>
+                          <option value="type_box">Un box de stockage</option>
+                          <option value="type_logement_qq_meubles">Quelques meubles</option>
+                          <option value="type_piano">Un piano droit</option>
+                        </select><span class="ui-selectmenu-button ui-widget ui-state-default ui-corner-all" tabindex="0" id="ui-id-2-button" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="ui-id-2-menu" aria-haspopup="true" style="width: 165px;"><span class="ui-icon ui-icon-triangle-1-s"></span><span class="ui-selectmenu-text">Je déménage</span></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="input-date">
+                            <i class="icon-date"></i>
+                            <input type="text" name="date_debut" placeholder="Date idéale" style="margin-top: 0px;" id="dp1582135396106" class="hasDatepicker">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <input type="hidden" name="origin" value="miniform">
+                        <a href="#" id="odform-home-ajax-submit" title="" class="button validation-formulaire">Calculer mon tarif <i class="fa fa-angle-right"></i></a>
+                   </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+-->
+
+
+</body>
+</html>
