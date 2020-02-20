@@ -20,7 +20,7 @@ logging.info('DATABASE is ready')
 @app.route('/')
 @app.route('/logistics')
 def demo():
-    return render_template('404.html')
+    return render_template('index.html')
 
 
 def get_bookings():
