@@ -1,0 +1,12 @@
+<form action="/echo" method="POST">
+<div>
+<input name="text">
+</div>
+<div>
+<input type="submit" value="Echo">
+</div>
+</form>
+
+{% if text %}
+  You said: {{ text }}
+{% endif %}

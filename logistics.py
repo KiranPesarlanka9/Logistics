@@ -4,7 +4,7 @@ from db import load_data, DATABASE_FILE, BOOKINGS_FILE, TinyDB
 from app import logging
 from flask import Flask, render_template, request
 
-SUCCESS = {"success": True, "message": "Booking successfully!"}
+SUCCESS = {"success": True, "message": "Booking Successfully!"}
 FAILURE = {"success": False, "message": "Booking Unsuccessfully!"}
 
 if not os.path.exists(DATABASE_FILE):
@@ -16,28 +16,36 @@ booking_db = TinyDB(BOOKINGS_FILE)
 
 
 logging.info('DATABASE is ready')
-
-@app.route('/')
+#@app.route("/")
 @app.route('/logistics')
 def demo():
     return render_template('index.html')
 
-@app.route('/admin')
-def admin():
-    if request.method == 'GET':
-        return render_template('admin.html')
-    if request.method == 'POST':
-        greetIn = ['hey', 'hi', 'hey there', 'hi there', 'hello', 'hola', 'yoo']
-        byeIn = ['bye', 'see you later', 'catch you later', 'toodles']
-        nameOut = ['my name is Fatty!!', 'Fatty is my name', 'you can call me Fatty', 'I go by the name of Fatty']
-        greetOut = ['hey there!', 'hi!', 'hi there!', 'hey!']
-        byeOut = ['bye bye', 'bye. see you later']
-        human1 = request.form['human']
-        if human1 in greetIn:
-            bot = random.choice(greetOut)
-            return render_template('admin.html', bot=bot)
-        else:
-            render_template('admin.html')
+@app.route("/test")
+def hello():
+    #return render_template('echo.html')
+    return render_template('login.html')
+
+@app.route("/echo", methods=['POST'])
+def echo():
+    return render_template('echo.html', text=request.form['text'])
+
+@app.route("/signup",methods=['GET','POST'])
+def signup():
+    email = request.form.get('InputEmail')
+    password = request.form.get('InputPassword')
+    confirm_password = request.form.get('InputConfirmPassword')
+    print(str(email))
+    print(str(password))
+    print(str(confirm_password))
+    return "You have signed up!"
+
+@app.route("/submit", methods=['POST'])
+def submit():
+    return render_template('success.html')
+
+
+
 
 
 def get_bookings():
