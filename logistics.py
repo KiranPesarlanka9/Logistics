@@ -22,7 +22,7 @@ logging.info('DATABASE is ready')
 def demo():
     return render_template('index.html')
 
-@app.rount('/admin')
+@app.route('/admin')
 def admin():
     if request.method == 'GET':
         return render_template('admin.html')
