@@ -22,6 +22,23 @@ logging.info('DATABASE is ready')
 def demo():
     return render_template('index.html')
 
+@app.rount('/admin')
+def admin():
+    if request.method == 'GET':
+        return render_template('admin.html')
+    if request.method == 'POST':
+        greetIn = ['hey', 'hi', 'hey there', 'hi there', 'hello', 'hola', 'yoo']
+        byeIn = ['bye', 'see you later', 'catch you later', 'toodles']
+        nameOut = ['my name is Fatty!!', 'Fatty is my name', 'you can call me Fatty', 'I go by the name of Fatty']
+        greetOut = ['hey there!', 'hi!', 'hi there!', 'hey!']
+        byeOut = ['bye bye', 'bye. see you later']
+        human1 = request.form['human']
+        if human1 in greetIn:
+            bot = random.choice(greetOut)
+            return render_template('admin.html', bot=bot)
+        else:
+            render_template('admin.html')
+
 
 def get_bookings():
     bookings = booking_db.storage.read()
@@ -72,4 +89,4 @@ def bookings():
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000)
-    
+
