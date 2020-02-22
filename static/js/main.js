@@ -56,4 +56,9 @@ $(document).ready(function(){
     initAutocomplete('my-input-searchbox-departure', 'map-departure');
     initAutocomplete('my-input-searchbox-arrival', 'map-arrival');
   });
+  $("#shiftingBtn").click(function(){
+    $("#myModal2").modal();
+    initAutocomplete('my-input-searchbox-departure2', 'map-departure2');
+    initAutocomplete('my-input-searchbox-arrival2', 'map-arrival2');
+  });
 });

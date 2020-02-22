@@ -16,11 +16,12 @@ booking_db = TinyDB(BOOKINGS_FILE)
 
 
 logging.info('DATABASE is ready')
-#@app.route("/")
+@app.route("/")
 @app.route('/logistics')
 def demo():
     return render_template('index.html')
 
+"""
 @app.route("/test")
 def hello():
     #return render_template('echo.html')
@@ -39,14 +40,11 @@ def signup():
     print(str(password))
     print(str(confirm_password))
     return "You have signed up!"
-
+"""
 @app.route("/submit", methods=['POST'])
 def submit():
-    return render_template('success.html')
-
-
-
-
+    booking_db.insert(dict(request.form))
+    return render_template('success.html', name=request.form.get('firstName'), date=request.form.get('checkin'))
 
 def get_bookings():
     bookings = booking_db.storage.read()
@@ -54,7 +52,6 @@ def get_bookings():
 
 def get_tarif(start, end):
 
-    #calculate tarif
     if end-start <= 10:
         tarif = 51
     elif end-start <= 20:

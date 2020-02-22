@@ -6,153 +6,278 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Main CSS File-->
   <link rel="stylesheet" href="/static/css/style.css" />
+  <!--
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 
 </head>
-<body style="background: aliceblue;">
+<body>
+
+<div class="main">
   <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"></div></label>
-
-<div class="container">
-  <h2>Logistics</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" id="transportBtn">Transportation</button>
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Out Shifting</button>
-  
-  <br/>
-  <br/>
-  <br/>
-  <!-- AutoComplete Example-->
-  <input id="my-input-searchbox" type="text" placeholder="Autocomplete Widget">
-  <div id="map"></div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Transportation</h4>
-        </div>
-        <div class="modal-body">
-          <form action="/submit" method="post">
-            <div class="form-row">
-              <div class="form-group col-md-6">
+  <div class="container">
+    <h2 class="homeHeading">Logistics</h2>
+    <br />
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg myBtn" id="transportBtn">Transportation</button>
+    <button type="button" class="btn btn-info btn-lg myBtn" id="shiftingBtn">House Shifting</button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!--
+              <h4 class="modal-title">Transportation</h4>
+            -->
+          </div>
+          <div class="modal-body">
+            <form action="/submit" method="post">
+              <div class="form-group">
                 <label for="departure">Departure</label>
-                <input class="form-control" id="my-input-searchbox-departure" type="text" name="departure" placeholder="Autocomplete Widget">
+                <input class="form-control" id="my-input-searchbox-departure" type="text" name="departure" placeholder="Enter Departure Location" required>
                 <div id="map-departure"></div>
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group">
                 <label for="arrival">Arrival</label>
-                <input  class="form-control" id="my-input-searchbox-arrival" type="text" name="arrival" placeholder="Autocomplete Widget">
+                <input  class="form-control" id="my-input-searchbox-arrival" type="text" name="arrival" placeholder="Enter Arrival Location" required>
                 <div id="map-arrival"></div>
               </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="checkin">Date of Transportation</label>
+                    <input class="form-control" type="date" name="checkin" id="checkin" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="time">Time</label>
+                    <input class="form-control" type="time" name="time" id="time" required>
+                </div>
+              </div>
+              <div id="accordion">
+              <div class="card">
+                <div class="card-header">
+                  <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                    Additional Information
+                  </a>
+                </div>
+                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                    <h4>Choose the Supervan that suits you</h4>
+                    <label>
+                      <input type="radio" name="test" value="small" checked>
+                      <img src="/static/images/small.png">
+                    </label>
+                    <label>
+                      <input type="radio" name="test" value="big">
+                      <img src="/static/images/classic.png">
+                    </label>
+                    <label>
+                      <input type="radio" name="test" value="big">
+                      <img src="/static/images/large.png">
+                    </label>
+                    <label>
+                      <input type="radio" name="test" value="big">
+                      <img src="/static/images/jumbo.png">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                  Personal Information
+                </a>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="firstName">First name</label>
+                          <input type="name" class="form-control" id="firstName" placeholder="First Name" name="firstName" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName" id="lastName">Last name</label>
+                            <input type="name" class="form-control" id="lastName" placeholder="Last Name" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Email</label>
+                          <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="mobile" id="mobile_label">Mobile No</label>
+                            <input type="number"
+                                   class="form-control"
+                                   name="mobile"
+                                   id="mobile"
+                                   maxlength="10"
+                                   minlength="10"
+                                   size="10"
+                                   pattern="[0-9.]+"
+                                   placeholder="Mobile number"
+                                   required/>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-                <label for="checkin">Date of Transportation</label>
-                <input class="form-control" type="date" name="checkin" id="checkin">
-            </div>
+            <br />
             <div class="form-row">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress1">
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="inputAddress2">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" name="inputCity">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip" name="ZIP">
-              </div>
                 <div class="form-group">
-                <input type="submit" value="Book Now !!">
+                <input type="submit" value="Book Now" class="btn btn-info btn-lg">
                 <!--<input> type="submit" class="btn btn-primary">Validate my Transport</input>-->
                 </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- 2Modal -->
-  <div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Out shifting</h4>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    <!-- 2Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!--
+            <h4 class="modal-title">House shifting</h4>
+            -->
+          </div>
+          <div class="modal-body">
+            <form action="/submit" method="post">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input class="form-control" id="my-input-searchbox-departure2" type="text" name="departure" placeholder="Enter Departure City" required>
+                  <div id="map-departure2"></div>
+                </div>
+                <div class="form-group col-md-6">
+                  <input  class="form-control" id="my-input-searchbox-arrival2" type="text" name="arrival" placeholder="Enter Arrival City" required>
+                  <div id="map-arrival2"></div>
+                </div>
               </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="checkin">Date of Transportation</label>
+                    <input class="form-control" type="date" name="checkin" id="checkin" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="time">Time</label>
+                    <input class="form-control" type="time" name="time" id="time" required>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
+              <div class="form-group">
+                <label class="control-label col-sm-offset-2 col-sm-2" for="company">Company</label>
+                <select id="selectMenu" class="form-control">
+                      <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">I move</font></font></option>
+                      <option value="type_logement_studio"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A studio &lt;20 m²</font></font></option>
+                      <option value="type_logement_t1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A T1 - 20 to 40 m²</font></font></option>
+                      <option value="type_logement_t2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A T2 - 40 to 60 m²</font></font></option>
+                      <option value="type_logement_t3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A T3 - 60 to 80 m²</font></font></option>
+                      <option value="type_logement_t4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A T4 - 80 to 100 m²</font></font></option>
+                      <option value="type_logement_t5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A T5 - 100 to 200 m²</font></font></option>
+                      <option value="type_logement_t6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A T6 - 200 m² and more</font></font></option>
+                      <option value="type_box"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A storage box</font></font></option>
+                      <option value="type_logement_qq_meubles"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Some furniture</font></font></option>
+                      <option value="type_piano"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">An upright piano</font></font></option>
+                      </select>
                 </select>
               </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+              <div id="accordion">
+              <div class="card">
+                <div class="card-header">
+                  <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                    Additional Information
+                  </a>
+                </div>
+                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                    <h5>Do you know the approximate volume of your furniture?</h5>
+                    <!-- Default inline 1-->
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample">
+                      <label class="custom-control-label" for="defaultInline1">Yes</label>
+                    </div>
+
+                    <!-- Default inline 2-->
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+                      <label class="custom-control-label" for="defaultInline2">No</label>
+                    </div>
+                  </div>
+                  <!--Material textarea-->
+                  <div class="form-group green-border-focus">
+                    <label for="exampleFormControlTextarea5">Do you have any additional information to send us?</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                  Personal Information
+                </a>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="firstName">First name</label>
+                          <input type="name" class="form-control" id="firstName" placeholder="First Name" name="firstName" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName" id="lastName">Last name</label>
+                            <input type="name" class="form-control" id="lastName" placeholder="Last Name" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Email</label>
+                          <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="mobile" id="mobile_label">Mobile No</label>
+                            <input type="number"
+                                   class="form-control"
+                                   name="mobile"
+                                   id="mobile"
+                                   maxlength="10"
+                                   minlength="10"
+                                   size="10"
+                                   pattern="[0-9.]+"
+                                   placeholder="Mobile number"
+                                   required/>
+                        </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                  Check me out
-                </label>
-              </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group">
+                <input type="submit" value="Book Now" class="btn btn-info btn-lg">
+                <!--<input> type="submit" class="btn btn-primary">Validate my Transport</input>-->
+                </div>
             </div>
-            <input type="submit" class="btn btn-primary" value="Book Now">
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>

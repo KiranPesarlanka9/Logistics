@@ -1,9 +1,19 @@
 .container {
   text-align: center;
+  vertical-align: middle;
+  padding-top: 12em;
 }
 
 .pac-container {
   z-index: 10000;
+}
+
+body {
+  background: url('../images/home.jpg');
+}
+
+.homeHeading {
+  color: #fff;
 }
 
 /*CSS for Toggle button*/
@@ -91,4 +101,26 @@ input:checked + .slider:after
   height: 40px;
   text-overflow: ellipsis;
   padding: 0 1em;
+}
+
+.myBtn {
+  margin: 0 8px;
+}
+
+/* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
 }
