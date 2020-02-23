@@ -22,17 +22,8 @@ def demo():
     return render_template('index.html')
 
 """
-@app.route("/test")
-def hello():
-    #return render_template('echo.html')
-    return render_template('login.html')
-
-@app.route("/echo", methods=['POST'])
-def echo():
-    return render_template('echo.html', text=request.form['text'])
-
-@app.route("/signup",methods=['GET','POST'])
-def signup():
+@app.route("/admin",methods=['GET','POST'])
+def admin():
     email = request.form.get('InputEmail')
     password = request.form.get('InputPassword')
     confirm_password = request.form.get('InputConfirmPassword')
@@ -49,40 +40,6 @@ def submit():
 def get_bookings():
     bookings = booking_db.storage.read()
     return bookings
-
-def get_tarif(start, end):
-
-    if end-start <= 10:
-        tarif = 51
-    elif end-start <= 20:
-        tarif = 74.90
-    elif end-start <= 30:
-        tarif = 79.40
-    elif end-start <= 40:
-        tarif = 85.20
-    else:
-        tarif = 0
-    return tarif
-
-def create_booking(data):
-
-
-    if not data:
-        return FAILURE
-    else:
-        #dump the data into DB
-        _from = data.get('from', '')
-        _to = data.get('to', '')
-        start = data.get('start', 0)
-        end = data.get('end', 0)
-        _type = data.get('type', 'classic')
-        tarif = get_tarif(start, end)
-        if not tarif:
-            SUCCESS["message"] = "Please contact Admin!! If you are making booking more than 3 days"
-            return SUCCESS
-
-        booking_db.insert({"from": _from, "to": _from, "start": start, "end": end, "_type": _type, "tarif": tarif})
-        return SUCCESS
 
 
 @app.route('/bookings', methods = ['GET', 'POST'])
