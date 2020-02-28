@@ -8,3 +8,4 @@ schedule==0.6.0
 tinydb==3.15.2
 Werkzeug==1.0.0
 Flask-HTTPAuth
+sendgrid
