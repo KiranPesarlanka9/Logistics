@@ -35,7 +35,6 @@ def verify(username, password):
 @app.route("/")
 @app.route('/logistics')
 def demo():
-    import pdb;pdb.set_trace()
     return render_template('index.html')
 
 @app.route("/submit", methods=['POST'])
