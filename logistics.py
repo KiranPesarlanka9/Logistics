@@ -2,14 +2,20 @@ import os
 from app import app
 from app import logging
 
+from deeputil import *
 from flask import Flask, render_template, request
 from flask_httpauth import HTTPBasicAuth
 
-from db import load_data, DATABASE_FILE, BOOKINGS_FILE, TinyDB
 
+from mailing import send_mail
+from db import load_data, DATABASE_FILE, BOOKINGS_FILE, TinyDB
 SUCCESS = {"success": True, "message": "Booking Successfully!"}
 FAILURE = {"success": False, "message": "Booking Unsuccessfully!"}
 USER_DATA = {"admin": "admin123"}
+
+resp_mail_html = open('templates/mail.html')
+lines = resp_mail_html.readlines()
+MAIL_CONTENT = ' '.join(lines)
 
 if not os.path.exists(DATABASE_FILE):
     logging.info("DATABASE doesn't exists")
@@ -29,11 +35,19 @@ def verify(username, password):
 @app.route("/")
 @app.route('/logistics')
 def demo():
+    import pdb;pdb.set_trace()
     return render_template('index.html')
 
 @app.route("/submit", methods=['POST'])
 def submit():
-    booking_db.insert(dict(request.form))
+    data = dict(request.form)
+    email =  data.get('email', '')
+    booking_id = generate_random_string(length=24)
+    data["booking_id"] = booking_id
+    customer_mail_content = MAIL_CONTENT.format(name=data.get('firstName'), date=data.get('checkin'), booking_id=booking_id)
+    send_mail(customer_mail_content, "Your Booking is confirmed")
+
+    booking_db.insert(data)
     return render_template('success.html', name=request.form.get('firstName'), date=request.form.get('checkin'))
 
 def get_bookings():
