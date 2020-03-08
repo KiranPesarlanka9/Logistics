@@ -56,7 +56,7 @@ def submit():
                                                     mobile=data.get('mobile', ''),
                                                     email=data.get('email', '')
                                                     )
-    send_mail(admin_mail_content, "New Booking !!", 'kiranpesarlanka9@gmail.com')
+    send_mail(admin_mail_content, "New Booking !!", 'anilkumarsannamuri@gmail.com')
     booking_db.insert(data)
     return render_template('success.html', name=request.form.get('firstName'), date=request.form.get('checkin'))
 
