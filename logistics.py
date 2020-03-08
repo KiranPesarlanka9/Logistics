@@ -17,6 +17,8 @@ resp_mail_html = open('templates/mail.html')
 lines = resp_mail_html.readlines()
 MAIL_CONTENT = ' '.join(lines)
 
+admin_mail_html = open('templates/admin_mail.html')
+ADMIN_MAIL_CONTENT = ' '.join(admin_mail_html.readlines())
 if not os.path.exists(DATABASE_FILE):
     logging.info("DATABASE doesn't exists")
     load_data()
@@ -44,8 +46,17 @@ def submit():
     booking_id = generate_random_string(length=24)
     data["booking_id"] = booking_id
     customer_mail_content = MAIL_CONTENT.format(name=data.get('firstName'), date=data.get('checkin'), booking_id=booking_id)
-    send_mail(customer_mail_content, "Your Booking is confirmed")
-
+    send_mail(customer_mail_content, "Your Booking is confirmed", data.get('email', ''))
+    admin_mail_content = ADMIN_MAIL_CONTENT.format(arrival=data.get('arrival', ''),
+                                                    departure=data.get('departure', ''),
+                                                    checkin=data.get('checkin', ''),
+                                                    time=data.get('time', ''),
+                                                    test=data.get('test', ''),
+                                                    firstName=data.get('firstName', ''),
+                                                    mobile=data.get('mobile', ''),
+                                                    email=data.get('email', '')
+                                                    )
+    send_mail(admin_mail_content, "New Booking !!", 'kiranpesarlanka9@gmail.com')
     booking_db.insert(data)
     return render_template('success.html', name=request.form.get('firstName'), date=request.form.get('checkin'))
 
@@ -58,8 +69,8 @@ def get_bookings():
 def bookings():
     if request.method == 'GET':
         return get_bookings()
-    if request.method == 'POST':
-        return create_booking(request.json)
+    #if request.method == 'POST':
+    #    return create_booking(request.json)
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000)
