@@ -47,7 +47,7 @@ def submit():
     data["booking_id"] = booking_id
     customer_mail_content = MAIL_CONTENT.format(name=data.get('firstName'), date=data.get('checkin'), booking_id=booking_id)
     send_mail(customer_mail_content, "Your Booking is confirmed", data.get('email', ''))
-    admin_mail_content = ADMIN_MAIL_CONTENT.format(arrival=data.get('arrival', ''),
+    admin_mail_content = ADMIN_MAIL_CONTENT.format(arrival=data.get('arrival', ''), title=data.get('Booking from '+data.get('firstName', '')),
                                                     departure=data.get('departure', ''),
                                                     checkin=data.get('checkin', ''),
                                                     time=data.get('time', ''),
@@ -56,13 +56,28 @@ def submit():
                                                     mobile=data.get('mobile', ''),
                                                     email=data.get('email', '')
                                                     )
-    send_mail(admin_mail_content, "New Booking !!", 'kiranpesarlanka9@gmail.com')
+    send_mail(admin_mail_content, "New Booking !!", 'anilkumarsannamuri@gmail.com')
     booking_db.insert(data)
     return render_template('success.html', name=request.form.get('firstName'), date=request.form.get('checkin'))
 
 def get_bookings():
     bookings = booking_db.storage.read()
-    return bookings
+    final_string = []
+    for booking in bookings['_default']:
+        data = bookings['_default'][booking]
+        final_string.append(ADMIN_MAIL_CONTENT.format(arrival=data.get('arrival', ''), title="Booking No. "+ str(booking),
+                                                    departure=data.get('departure', ''),
+                                                    checkin=data.get('checkin', ''),
+                                                    time=data.get('time', ''),
+                                                    test=data.get('test', ''),
+                                                    firstName=data.get('firstName', ''),
+                                                    mobile=data.get('mobile', ''),
+                                                    email=data.get('email', '')
+                                                    ))
+        final_string.append('</br>')
+
+
+    return ''.join(final_string)
 
 @app.route('/bookings', methods = ['GET', 'POST'])
 @auth.login_required
