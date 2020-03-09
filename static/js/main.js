@@ -61,4 +61,7 @@ $(document).ready(function(){
     initAutocomplete('my-input-searchbox-departure2', 'map-departure2');
     initAutocomplete('my-input-searchbox-arrival2', 'map-arrival2');
   });
+  $("#togBtn").click(function(){
+   $(this).next().toggleClass("after");
+  })
 });
